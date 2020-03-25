@@ -1,0 +1,257 @@
+@media (max-width: 1366px) {
+  div.current-weather img {
+    width: 120px;
+  }
+  .section-5days h3 {
+    margin: 20px 0px;
+  }
+  div.information {
+    margin-top: 10px;
+
+    strong {
+      font-size: 23px;
+    }
+    .time {
+      margin-top: 7px;
+    }
+  }
+  body {
+    section {
+      margin-bottom: 0px;
+    }
+    .h4,
+    h4 {
+      font-size: 17px;
+    }
+    .h3,
+    h3 {
+      font-size: 22px;
+    }
+    .weather-forecast {
+      .days {
+        .col-md-2 {
+          margin-top: 10px;
+        }
+        &.col-md-2 h4 {
+          margin-bottom: 0;
+        }
+        .weather-ico {
+          width: 80px;
+        }
+      }
+      &.cf {
+        padding: 10px 20px 0;
+        height: 740px;
+        margin-top: 15px;
+      }
+    }
+    .hourly ul {
+      margin-top: 10px;
+    }
+    .search-city-form {
+      margin-top: 75px;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1300px;
+  }
+}
+@media (max-width: 1199px) {
+  .day-description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+  }
+  .days {
+    margin: 0px;
+
+    li {
+      padding: 0px 10px;
+      font-size: 0.9rem;
+
+      &.week-day {
+        margin-top: 0px;
+      }
+    }
+    .hourly img {
+      width: 30px;
+    }
+  }
+}
+@media (max-width: 991px) {
+  body {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+    user-drag: none;
+
+    & > .container {
+      padding: 0;
+    }
+    .container.content-wrapper {
+      width: 100%;
+      max-width: 100%;
+      padding: 0px !important;
+    }
+    .section-search {
+      background: rgba(34, 34, 34, 0.9) none repeat scroll 0 0;
+      border-right: 1px solid #909090;
+      height: 100vh;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100vw;
+      z-index: 11;
+    }
+    div.weather-forecast {
+      & > section {
+        clear: none;
+        float: left;
+        margin-bottom: 0;
+        width: 100vw;
+      }
+      .section-5days h3 {
+        text-align: center;
+      }
+      .col-md-2 {
+        &.day {
+          border-bottom: 1px solid #535353;
+          border-right: 0 none;
+          text-align: left;
+          width: 100%;
+        }
+        img {
+          float: left;
+          margin-left: -15px;
+        }
+      }
+      &.cf {
+        border: 0 none;
+        border-radius: 0;
+        min-height: 100vh;
+        margin-top: 0;
+        padding: 10px 0 0;
+        height: auto;
+      }
+    }
+    .days {
+      .weather-ico {
+        background: none;
+        width: 50px;
+      }
+    }
+    .search-city-form {
+      margin: 0 auto;
+      width: 100%;
+      float: none;
+    }
+    .h3,
+    h3 {
+      font-size: 20px;
+    }
+    .hourly {
+      div {
+        float: none;
+        width: auto;
+      }
+      .time {
+        float: left;
+      }
+      li {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .icon {
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        padding-right: 10px;
+        position: absolute;
+        right: 70px;
+      }
+      .icon,
+      .temp {
+        float: right;
+      }
+    }
+    .information {
+      text-align: center;
+      display: inline-block;
+      float: none;
+      position: relative;
+      top: 20px;
+
+      .time {
+        float: none;
+        display: inline-block;
+      }
+      strong {
+        float: none;
+        font-size: 35px;
+      }
+    }
+    .current-weather {
+      img {
+        float: none;
+        margin: 0px auto 10px;
+        width: 210px;
+      }
+      &.cf {
+        text-align: center;
+      }
+    }
+    .day-description {
+      float: right;
+      line-height: 50px;
+    }
+    .weather-forecast {
+      .col-md-2.day {
+        border: none;
+        clear: both;
+        padding-top: 10px;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          cursor: pointer;
+        }
+      }
+    }
+    .days {
+      padding: 0px 20px;
+
+      .rain,
+      .wind {
+        clear: both;
+      }
+      .day {
+        &:nth-child(1) .date {
+          border: medium none;
+        }
+      }
+    }
+    .refresh {
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+    .max-min-temp {
+      float: left;
+      line-height: 50px;
+    }
+
+    .section-curr-weather {
+      position: static;
+      padding: 0px 50px;
+
+      & > h3 {
+        font-size: 20px;
+        margin: 0px;
+        text-align: center;
+      }
+    }
+  }
+}

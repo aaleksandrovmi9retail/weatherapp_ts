@@ -1,0 +1,26 @@
+// refresh button animation
+@-webkit-keyframes refresh-button-spin {
+  0% {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes refresh-button-spin {
+  0% {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+.refresh-button-spin {
+  -webkit-animation: refresh-button-spin 2s linear;
+  animation: refresh-button-spin 2s linear;
+}

@@ -1,0 +1,48 @@
+.ta-center {
+  text-align: center;
+}
+.ta-left {
+  text-align: left;
+}
+.ta-right {
+  text-align: right;
+}
+.clr {
+  clear: both;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.cf::before,
+.cf::after {
+  content: "";
+  display: table;
+}
+.cf::after {
+  clear: both;
+}
+.cf::before,
+.cf::after {
+  content: "";
+  display: table;
+}
+
+.h1,
+.h2,
+.h3,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #ffffff;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  text-shadow: 1px 1px 1px #202020;
+  -moz-text-shadow: 1px 1px 1px #202020;
+  -webkt-text-shadow: 1px 1px 1px #202020;
+  -ms-text-shadow: 1px 1px 1px #202020;
+}
