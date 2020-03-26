@@ -11,7 +11,8 @@ const ForecastHourly = ({ forecast }) => {
             <div className="icon">
               <img
                 src={weatherImage(hourly.isdaytime, hourly.weatherCode)}
-                alt=""
+                alt={hourly.weatherDesc[0].value}
+                title={hourly.weatherDesc[0].value}
               />
             </div>
             <div className="temp"> {hourly.tempC} °</div>

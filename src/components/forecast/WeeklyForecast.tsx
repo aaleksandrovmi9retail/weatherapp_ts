@@ -54,7 +54,10 @@ const WeeklyForecast = ({ weather, pending }) => {
               <div className="max-min-temp">
                 {forecast.mintempC} ° | <strong> {forecast.maxtempC} °</strong>
               </div>
-              <div className="day-description">
+              <div
+                className="day-description"
+                title={forecast.hourly[4].weatherDesc[0].value}
+              >
                 {forecast.hourly[4].weatherDesc[0].value}
               </div>
               <div className="rain slide-down">
