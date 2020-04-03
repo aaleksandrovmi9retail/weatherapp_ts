@@ -5,7 +5,7 @@ import {
   showSuggestionsList,
   hideSuggestionsList
 } from "../store/middleware/weather";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
 import CitySuggestions from "./CitySuggestions";
 
@@ -21,7 +21,7 @@ const SearchForm = ({
   const [input, setInputs] = useState({ city: "" });
   const [button, setButton] = useState(false);
 
-  const handleInputChange = event => {
+  const handleInputChange = (event: any) => {
     event.persist();
     setInputs(input => ({
       ...input,
@@ -102,7 +102,7 @@ const SearchForm = ({
     </section>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     city: state.weatherReducer.city,
     suggestions: state.weatherReducer.suggestions,
@@ -110,7 +110,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       getWeatherData,

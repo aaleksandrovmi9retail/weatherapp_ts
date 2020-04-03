@@ -19,8 +19,9 @@ const initState = {
   suggestions: [],
   showSuggestions: true
 };
+type Actions = {};
 
-export const weatherReducer = (state = initState, action) => {
+export const weatherReducer = (state = initState, action: Actions) => {
   const _action = {
     [AT.GET_DATA_SUCCESS]: () => {
       state = {

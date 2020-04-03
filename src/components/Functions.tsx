@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { backgrounds } from "./Backgrounds";
 
-const addBodyClass = className => document.body.classList.add(className);
-const removeBodyClass = className => document.body.classList.remove(className);
+const addBodyClass = (className: string) =>
+  document.body.classList.add(className);
+const removeBodyClass = (className: string) =>
+  document.body.classList.remove(className);
 
-export const useBodyClass = className => {
+export const useBodyClass = (className: string) => {
   useEffect(() => {
     // Set up
     className instanceof Array

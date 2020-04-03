@@ -86,7 +86,7 @@ const WeeklyForecast = ({ weather, pending }) => {
   return <>{weeklyForecast} </>;
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     weather: state.weatherReducer.weather,
     pending: state.weatherReducer.pending

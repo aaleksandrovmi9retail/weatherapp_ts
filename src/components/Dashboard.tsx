@@ -4,13 +4,13 @@ import SearchForm from "./SearchForm";
 import DailyForecast from "./forecast/DailyForecast";
 import WeeklyForecast from "./forecast/WeeklyForecast";
 import { useBodyClass } from "./Functions";
-import { bindActionCreators, compose } from "redux";
+import { bindActionCreators, compose, Dispatch } from "redux";
 import { geolocated } from "react-geolocated";
 import { getWeatherData, getUserLocation } from "../store/middleware/weather";
 import { bodyBackgroundClass } from "./Functions";
 import Loading from "./Loading";
 
-const Dashboard = ({
+const Dashboard: React.FC<any> = ({
   weather,
   pending,
   getWeatherData,
@@ -63,7 +63,7 @@ const Dashboard = ({
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     weather: state.weatherReducer.weather,
     pending: state.weatherReducer.pending,
@@ -72,7 +72,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators({ getWeatherData, getUserLocation }, dispatch);
 
 export default compose(

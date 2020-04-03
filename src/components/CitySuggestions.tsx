@@ -3,7 +3,7 @@ import {
   getWeatherData,
   hideSuggestionsList
 } from "../store/middleware/weather";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
 
 const CitySuggestions = ({
@@ -14,7 +14,7 @@ const CitySuggestions = ({
   hideSuggestionsList,
   showSuggestions
 }) => {
-  const handleClick = event => {
+  const handleClick = (event: any) => {
     setInputs(() => ({
       city: event.target.textContent,
       changed: true
@@ -34,11 +34,16 @@ const CitySuggestions = ({
 
   const citySuggestions = suggestions ? (
     <>
-      {suggestions.map((results, index) => (
-        <li key={index} onClick={handleClick}>
-          {results.display_name}
-        </li>
-      ))}
+      {suggestions.map(
+        (
+          results: { display_name: React.ReactNode },
+          index: string | number | undefined
+        ) => (
+          <li key={index} onClick={handleClick}>
+            {results.display_name}
+          </li>
+        )
+      )}
     </>
   ) : (
     ""
@@ -51,13 +56,13 @@ const CitySuggestions = ({
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     showSuggestions: state.weatherReducer.showSuggestions
   };
 };
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators({ getWeatherData, hideSuggestionsList }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(CitySuggestions);

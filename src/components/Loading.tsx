@@ -48,7 +48,7 @@ const Loading = ({ pending }) => {
   return <> {loading} </>;
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     pending: state.weatherReducer.pending
   };
