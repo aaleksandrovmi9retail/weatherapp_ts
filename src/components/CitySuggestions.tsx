@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import {
   getWeatherData,
-  hideSuggestionsList
+  hideSuggestionsList,
 } from "../store/middleware/weather";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
@@ -12,12 +12,13 @@ const CitySuggestions = ({
   setInputs,
   getWeatherData,
   hideSuggestionsList,
-  showSuggestions
+  showSuggestions,
 }) => {
+  console.info(suggestions);
   const handleClick = (event: any) => {
     setInputs(() => ({
       city: event.target.textContent,
-      changed: true
+      changed: true,
     }));
     hideSuggestionsList();
   };
@@ -27,7 +28,7 @@ const CitySuggestions = ({
       getWeatherData(input.city, true);
       setInputs(() => ({
         ...input,
-        changed: false
+        changed: false,
       }));
     }
   }, [input, setInputs, getWeatherData]);
@@ -58,7 +59,7 @@ const CitySuggestions = ({
 
 const mapStateToProps = (state: any) => {
   return {
-    showSuggestions: state.weatherReducer.showSuggestions
+    showSuggestions: state.weatherReducer.showSuggestions,
   };
 };
 

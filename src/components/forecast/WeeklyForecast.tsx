@@ -15,17 +15,17 @@ const WeeklyForecast = ({ weather, pending }) => {
         breakpoint: 991,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2
-        }
+          slidesToScroll: 2,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const weeklyForecast = pending ? (
@@ -35,7 +35,7 @@ const WeeklyForecast = ({ weather, pending }) => {
       <h3>14 Days Weather Forecast </h3>
       <ul className="days row">
         <Slider {...settings}>
-          {weather.forecast.slice(0, 13).map((forecast, index) => (
+          {weather.slice(0, 13).map((forecast, index) => (
             <li className="week-day" key={index}>
               <h4 className="date">
                 {format(new Date(forecast.date), "eeee d")}
@@ -89,7 +89,7 @@ const WeeklyForecast = ({ weather, pending }) => {
 const mapStateToProps = (state: any) => {
   return {
     weather: state.weatherReducer.weather,
-    pending: state.weatherReducer.pending
+    pending: state.weatherReducer.pending,
   };
 };
 

@@ -12,22 +12,23 @@ import Loading from "./Loading";
 
 const Dashboard: React.FC<any> = ({
   weather,
+  current_condition,
   pending,
   getWeatherData,
   getUserLocation,
   city,
   coords,
-  userLocation
+  userLocation,
 }) => {
   // changing the body background regarding
   //day/night or sunny/rainy etc.
   useBodyClass(
     bodyBackgroundClass(
-      weather.current_condition.isdaytime,
-      weather.current_condition.weatherCode
+      current_condition[0].isdaytime,
+      current_condition[0].weatherCode
     )
   );
-  console.info(weather);
+  // console.info(weather);
 
   useEffect(() => {
     // if is first site load
@@ -65,10 +66,10 @@ const Dashboard: React.FC<any> = ({
 
 const mapStateToProps = (state: any) => {
   return {
-    weather: state.weatherReducer.weather,
+    current_condition: state.weatherReducer.current_condition,
     pending: state.weatherReducer.pending,
     city: state.weatherReducer.city,
-    userLocation: state.weatherReducer.userLocation
+    userLocation: state.weatherReducer.userLocation,
   };
 };
 
@@ -79,6 +80,6 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   geolocated({
     positionOptions: { enableHighAccuracy: true },
-    userDecisionTimeout: 5000
+    userDecisionTimeout: 5000,
   })
 )(Dashboard);
