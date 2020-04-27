@@ -5,37 +5,32 @@ import {
 } from "../store/middleware/weather";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
+import { Props } from "../store/interfaces/interfaces";
 
-const CitySuggestions = ({
-  suggestions,
-  input,
-  setInputs,
-  getWeatherData,
-  hideSuggestionsList,
-  showSuggestions,
-}) => {
-  console.info(suggestions);
+const CitySuggestions = (props: CitySuggestionsProps) => {
+  console.info(props);
+
   const handleClick = (event: any) => {
-    setInputs(() => ({
+    props.setInputs(() => ({
       city: event.target.textContent,
       changed: true,
     }));
-    hideSuggestionsList();
+    props.hideSuggestionsList();
   };
 
   useEffect(() => {
-    if (input.changed) {
-      getWeatherData(input.city, true);
-      setInputs(() => ({
-        ...input,
+    if (props.input.changed) {
+      props.getWeatherData(props.input.city, true);
+      props.setInputs(() => ({
+        ...props.input,
         changed: false,
       }));
     }
-  }, [input, setInputs, getWeatherData]);
+  }, [props.input, props.setInputs, props.getWeatherData]);
 
-  const citySuggestions = suggestions ? (
+  const citySuggestions = props.suggestions ? (
     <>
-      {suggestions.map(
+      {props.suggestions.map(
         (
           results: { display_name: React.ReactNode },
           index: string | number | undefined
@@ -51,7 +46,11 @@ const CitySuggestions = ({
   );
 
   return (
-    <div className={showSuggestions && input.city.length >= 3 ? "" : "hidden"}>
+    <div
+      className={
+        props.showSuggestions && props.input.city.length >= 3 ? "" : "hidden"
+      }
+    >
       <ul className="suggestions">{citySuggestions}</ul>
     </div>
   );
@@ -65,5 +64,9 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators({ getWeatherData, hideSuggestionsList }, dispatch);
+
+type CitySuggestionsProps = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps> &
+  Props;
 
 export default connect(mapStateToProps, mapDispatchToProps)(CitySuggestions);

@@ -6,15 +6,16 @@ import {
   hideSuggestions,
   showSuggestions,
 } from "../actions/actions";
+import { Dispatch } from "redux";
 
-export const getWeatherData = (city, refresh) => {
-  return (dispatch) => {
+export const getWeatherData = (city: string, refresh: boolean) => {
+  return (dispatch: Dispatch) => {
     if (!refresh) {
       dispatch(getDataPending());
     }
     // setTimeout(() => {}, 1200);
     fetch(
-      `https://api.worldweatheronline.com/premium/v1/weather.ashx?q=${city}&extra=isDayTime,localObsTime,utcDateTime&format=json&showlocaltime=yes&key=a0c0e9034ea64178abf132740201902`
+      `https://api.worldweatheronline.com/premium/v1/weather.ashx?q=${city}&extra=isDayTime,localObsTime,utcDateTime&format=json&showlocaltime=yes&key=e7940c5a22fd4d02a4b151147202704`
     )
       .then((res) => res.json())
       .then((res) => {
@@ -32,8 +33,8 @@ export const getWeatherData = (city, refresh) => {
   };
 };
 
-export const getUserLocation = (latitude, longitude) => {
-  return (dispatch) => {
+export const getUserLocation = (latitude: string, longitude: string) => {
+  return (dispatch: Dispatch) => {
     fetch(
       `https://eu1.locationiq.com/v1/reverse.php?key=41bc52deab055b&lat=${latitude}&lon=${longitude}&format=json`
     )
@@ -53,8 +54,8 @@ export const getUserLocation = (latitude, longitude) => {
   };
 };
 
-export const getSuggestions = (query) => {
-  return (dispatch) => {
+export const getSuggestions = (query: string) => {
+  return (dispatch: Dispatch) => {
     fetch(
       `https://eu1.locationiq.com/v1/search.php?key=41bc52deab055b&q=${query}&format=json`
     )
@@ -74,13 +75,13 @@ export const getSuggestions = (query) => {
 };
 
 export const hideSuggestionsList = () => {
-  return (dispatch) => {
+  return (dispatch: Dispatch) => {
     dispatch(hideSuggestions());
   };
 };
 
 export const showSuggestionsList = () => {
-  return (dispatch) => {
+  return (dispatch: Dispatch) => {
     dispatch(showSuggestions());
   };
 };

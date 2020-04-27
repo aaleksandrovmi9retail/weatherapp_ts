@@ -6,7 +6,7 @@ export interface initialState {
   pending: boolean;
   city: string;
   userLocation: boolean;
-  suggestions: Array<string>;
+  suggestions: Array<suggestion>;
   showSuggestions: boolean;
   type: string;
 }
@@ -34,3 +34,19 @@ export interface hourlyForecast extends currentCondition {
   windspeedKmph: string;
   time: string;
 }
+
+export type Props = {
+  suggestions?: Array<suggestion>;
+  getWeatherData: (city: string, trigger: boolean) => void;
+  hideSuggestionsList: () => void;
+  showSuggestions: () => void;
+  showSuggestionsList: () => void;
+  getSuggestions: (query: string) => void;
+  pending?: boolean;
+  city?: string;
+  input: {
+    city: string;
+    changed: boolean;
+  };
+  setInputs: any;
+};

@@ -93,4 +93,6 @@ const mapStateToProps = (state: any) => {
   };
 };
 
+type WeeklyForecastProps = ReturnType<typeof mapStateToProps>;
+
 export default connect(mapStateToProps)(WeeklyForecast);

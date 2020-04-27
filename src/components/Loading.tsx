@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { Props } from "../store/interfaces/interfaces";
 
-const Loading = ({ pending }) => {
+const Loading = (props: Props) => {
   const [timer, setTimer] = useState(2);
 
   useEffect(() => {
     let Timer;
     if (timer > 0) {
-      Timer = setTimeout(function() {
+      Timer = setTimeout(function () {
         setTimer(timer - 1);
       }, 1000);
     } else {
@@ -17,7 +18,7 @@ const Loading = ({ pending }) => {
 
   const loading =
     // Display the loading screen for 2s or if fetching is not completed
-    pending || timer > 0 ? (
+    props.pending || timer > 0 ? (
       <div className="pg-loading-screen pg-loading">
         <div className="pg-loading-inner">
           <div className="pg-loading-center-outer">
@@ -50,7 +51,7 @@ const Loading = ({ pending }) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    pending: state.weatherReducer.pending
+    pending: state.weatherReducer.pending,
   };
 };
 

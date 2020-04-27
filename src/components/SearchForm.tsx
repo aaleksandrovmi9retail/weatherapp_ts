@@ -3,48 +3,46 @@ import {
   getWeatherData,
   getSuggestions,
   showSuggestionsList,
-  hideSuggestionsList
+  hideSuggestionsList,
 } from "../store/middleware/weather";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
 import CitySuggestions from "./CitySuggestions";
+import { Props } from "../store/interfaces/interfaces";
 
-const SearchForm = ({
-  getWeatherData,
-  city,
-  getSuggestions,
-  suggestions,
-  showSuggestionsList,
-  showSuggestions,
-  hideSuggestionsList
-}) => {
-  const [input, setInputs] = useState({ city: "" });
+const SearchForm = (props: Props) => {
+  const [input, setInputs] = useState({ city: "", changed: false });
   const [button, setButton] = useState(false);
 
   const handleInputChange = (event: any) => {
     event.persist();
-    setInputs(input => ({
+    setInputs((input) => ({
       ...input,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }));
-    showSuggestionsList();
+    props.showSuggestionsList();
   };
 
-  const handleClickSubmit = e => {
+  const handleClickSubmit = (e: any) => {
     e.preventDefault();
 
     //use the city typed in the input, or the default state from the store
-    const citySearch = input.city ? input.city : city;
-    getWeatherData(citySearch, true);
-    hideSuggestionsList();
+    const citySearch = input.city ? input.city : props.city;
+    props.getWeatherData(citySearch, true);
+    props.hideSuggestionsList();
   };
 
   // if user types more then 3 chars send get call for city suggestions
   useEffect(() => {
-    if (input.city.length >= 3 && showSuggestions) {
-      getSuggestions(input.city);
+    if (input.city.length >= 3 && props.showSuggestions) {
+      props.getSuggestions(input.city);
     }
-  }, [input, getSuggestions, showSuggestions, showSuggestionsList]);
+  }, [
+    input,
+    props.getSuggestions,
+    props.showSuggestions,
+    props.showSuggestionsList,
+  ]);
 
   // rotate animation for the refresh button
   const toggleButtonAnimation = () => {
@@ -63,7 +61,7 @@ const SearchForm = ({
             ? "refresh-button-spin right pointer refresh "
             : "right pointer refresh "
         }
-        onClick={e => {
+        onClick={(e) => {
           toggleButtonAnimation();
           handleClickSubmit(e);
         }}
@@ -83,7 +81,7 @@ const SearchForm = ({
           />
 
           <CitySuggestions
-            suggestions={suggestions}
+            suggestions={props.suggestions}
             input={input}
             setInputs={setInputs}
           />
@@ -106,7 +104,7 @@ const mapStateToProps = (state: any) => {
   return {
     city: state.weatherReducer.city,
     suggestions: state.weatherReducer.suggestions,
-    showSuggestions: state.weatherReducer.showSuggestions
+    showSuggestions: state.weatherReducer.showSuggestions,
   };
 };
 
@@ -116,7 +114,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
       getWeatherData,
       getSuggestions,
       showSuggestionsList,
-      hideSuggestionsList
+      hideSuggestionsList,
     },
     dispatch
   );

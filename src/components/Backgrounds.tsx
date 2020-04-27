@@ -47,5 +47,5 @@ export const backgrounds = {
   122: "wsymbol_0004_black_low_cloud",
   119: "wsymbol_0003_white_cloud",
   116: "wsymbol_0002_sunny_intervals",
-  113: "wsymbol_0001_sunny"
+  113: "wsymbol_0001_sunny",
 };
