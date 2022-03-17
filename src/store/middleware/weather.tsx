@@ -13,10 +13,7 @@ export const getWeatherData = (city: string, refresh: boolean) => {
     if (!refresh) {
       dispatch(getDataPending());
     }
-    // setTimeout(() => {}, 1200);
-    fetch(
-      `https://api.worldweatheronline.com/premium/v1/weather.ashx?q=${city}&extra=isDayTime,localObsTime,utcDateTime&format=json&showlocaltime=yes&key=e7940c5a22fd4d02a4b151147202704`
-    )
+    fetch(`http://localhost:8000/forecast?city=${city}`)
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
